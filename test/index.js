@@ -144,54 +144,71 @@ describe('multi', function() {
         process.stdin.emit('data', '1 2 3');
     });
 });
-/*
 
+describe('build', function() {
+    it('should build single menus', function(done) {
+        var output = '';
+        var oldWrite = process.stdout.write;
 
-var ClientSideApp = function () {
-    var options = menu.build(menu.multi, 'Yeahhhh!!!!!', [{
-        title: 'Title 1',
-        action: function () {
-            console.log('fuck1');
-        }
-    }, {
-        title: 'Title 2',
-        action: function () {
-            console.log('fuck2');
-        }
-    }, {
-        title: 'Title 3',
-        action: function () {
-            console.log('fuck3');
-        }
-    }]);
+        process.stdout.write = function(data) {
+            output += data.toString();
+        };
 
-    options();
-};*/
+        var title = 'title';
+        var options = _.map(_.range(3), function(i) {
+            return {
+                title: 'option' + i,
+                action: function() {
+                    console.log(i);
+                }
+            }
+        });
 
-/** Menu **//*
-function opcion2() {
-    console.log('opcion2');
-    process.exit();
-}
+        var expected = _.reduce(options, function(acc, opt, i) {
+                return acc + (i + 1) + ') ' + opt.title + '\n';
+            }, title + ':\n') + '0\n';
 
-function opcion3() {
-    console.log('opcion3');
-    process.exit();
-}
+        menu.build(menu.single, 'title', options, function() {
+            process.stdout.write = oldWrite;
 
-var mainMenu = function () {
-    menu.single('Application type', [{
-        title: 'Client-side application with AngularJS and Bootstrap',
-        action: ClientSideApp
-    }, {
-        title: 'Alguna otra',
-        action: opcion2
-    }, {
-        title: 'Alguna mas',
-        action: opcion3
-    }]);
-};
+            assert.equal(output, expected);
 
+            done();
+        })();
 
-mainMenu();
-*/
+        process.stdin.emit('data', '1');
+    });
+
+    it('should build multi menus', function(done) {
+        var output = '';
+        var oldWrite = process.stdout.write;
+
+        process.stdout.write = function(data) {
+            output += data.toString();
+        };
+
+        var title = 'title';
+        var options = _.map(_.range(3), function(i) {
+            return {
+                title: 'option' + i,
+                action: function() {
+                    console.log(i);
+                }
+            }
+        });
+
+        var expected = _.reduce(options, function(acc, opt, i) {
+                return acc + (i + 1) + ') ' + opt.title + '\n';
+            }, title + ':\n') + '0\n1\n2\n';
+
+        menu.build(menu.multi, 'title', options, function() {
+            process.stdout.write = oldWrite;
+
+            assert.equal(output, expected);
+
+            done();
+        })();
+
+        process.stdin.emit('data', '1 2 3');
+    });
+});

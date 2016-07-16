@@ -1,6 +1,6 @@
 # Options menu
 
-[![Build Status](https://travis-ci.org/gnavalesi/options-menu.svg?branch=master)](https://travis-ci.org/gnavalesi/options-menu) [![Coverage Status](https://coveralls.io/repos/github/gnavalesi/options-menu/badge.svg?branch=master)](https://coveralls.io/github/gnavalesi/options-menu?branch=master) [![Code Climate](https://codeclimate.com/github/gnavalesi/options-menu/badges/gpa.svg)](https://codeclimate.com/github/gnavalesi/options-menu) [![Dependency Status](https://www.versioneye.com/user/projects/578a5db3c3d40f003caa3422/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/578a5db3c3d40f003caa3422)
+[![Build Status](https://travis-ci.org/gnavalesi/options-menu.svg?branch=master)](https://travis-ci.org/gnavalesi/options-menu) [![Test Coverage](https://codeclimate.com/github/gnavalesi/options-menu/badges/coverage.svg)](https://codeclimate.com/github/gnavalesi/options-menu/coverage) [![Code Climate](https://codeclimate.com/github/gnavalesi/options-menu/badges/gpa.svg)](https://codeclimate.com/github/gnavalesi/options-menu) [![Dependency Status](https://www.versioneye.com/user/projects/578a5db3c3d40f003caa3422/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/578a5db3c3d40f003caa3422)
 
 A simple library to use options menu in a console application.
 

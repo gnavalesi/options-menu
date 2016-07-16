@@ -4,5 +4,8 @@ node_js: "4.4"
 before_script:
   - npm install
   - npm install -g istanbul
+  - npm install -g codeclimate-test-reporter
 
-script: istanbul cover node_modules/.bin/_mocha test/index.js
+script:
+  - istanbul cover node_modules/.bin/_mocha test/index.js
+  - CODECLIMATE_REPO_TOKEN=3bb91864fc4a785574324200a6f5a572155279c357b112cc62776b739fb3a7fb codeclimate-test-reporter < ./coverage/lcov.info
